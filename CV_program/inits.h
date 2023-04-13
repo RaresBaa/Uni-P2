@@ -143,8 +143,8 @@ void init_io(void){
     PORTA=(0<<PORTA7) | (0<<PORTA6) | (0<<PORTA5) | (0<<PORTA4) | (0<<PORTA3) | (0<<PORTA2) | (0<<PORTA1) | (0<<PORTA0);
 
     // Port B initialization
-    // Function: Bit7=In Bit6=In Bit5=Out Bit4=In Bit3=In Bit2=Out Bit1=Out Bit0=Out 
-    DDRB=(0<<DDB7) | (0<<DDB6) | (1<<DDB5) | (0<<DDB4) | (0<<DDB3) | (1<<DDB2) | (1<<DDB1) | (1<<DDB0);
+    // Function: Bit7=In Bit6=In Bit5=Out Bit4=out Bit3=out Bit2=Out Bit1=Out Bit0=Out 
+    DDRB=(0<<DDB7) | (0<<DDB6) | (1<<DDB5) | (1<<DDB4) | (1<<DDB3) | (1<<DDB2) | (1<<DDB1) | (1<<DDB0);
     // State: Bit7=T Bit6=T Bit5=0 Bit4=T Bit3=T Bit2=0 Bit1=0 Bit0=0 
     PORTB=(0<<PORTB7) | (0<<PORTB6) | (0<<PORTB5) | (0<<PORTB4) | (0<<PORTB3) | (0<<PORTB2) | (0<<PORTB1) | (0<<PORTB0);
 
@@ -155,41 +155,34 @@ void init_io(void){
     PORTC=(0<<PORTC7) | (0<<PORTC6) | (0<<PORTC5) | (0<<PORTC4) | (0<<PORTC3) | (0<<PORTC2) | (0<<PORTC1) | (0<<PORTC0);
 
     // Port D initialization
-    // Function: Bit7=In Bit6=In Bit5=In Bit4=In Bit3=In Bit2=In Bit1=In Bit0=In 
-    DDRD=(0<<DDD7) | (0<<DDD6) | (0<<DDD5) | (0<<DDD4) | (0<<DDD3) | (0<<DDD2) | (0<<DDD1) | (0<<DDD0);
+    // Function: Bit7=out Bit6=In Bit5=In Bit4=out Bit3=In Bit2=In Bit1=In Bit0=In 
+    DDRD=(1<<DDD7) | (0<<DDD6) | (0<<DDD5) | (1<<DDD4) | (0<<DDD3) | (0<<DDD2) | (0<<DDD1) | (0<<DDD0);
     // State: Bit7=T Bit6=T Bit5=T Bit4=T Bit3=T Bit2=T Bit1=T Bit0=T 
     PORTD=(0<<PORTD7) | (0<<PORTD6) | (0<<PORTD5) | (0<<PORTD4) | (0<<PORTD3) | (0<<PORTD2) | (0<<PORTD1) | (0<<PORTD0);
 
     // Timer/Counter 0 initialization
-    TCCR0A=(0<<COM0A1) | (0<<COM0A0) | (0<<COM0B1) | (0<<COM0B0) | (0<<WGM01) | (0<<WGM00);
-    TCCR0B=(0<<WGM02) | (0<<CS02) | (0<<CS01) | (0<<CS00);
-    TCNT0=0x00;
-    OCR0A=0x00;
-    OCR0B=0x00;
-    // Timer/Counter 1 initialization
-    TCCR1A=(0<<COM1A1) | (0<<COM1A0) | (0<<COM1B1) | (0<<COM1B0) | (0<<WGM11) | (0<<WGM10);
-    TCCR1B=(0<<ICNC1) | (0<<ICES1) | (0<<WGM13) | (0<<WGM12) | (0<<CS12) | (0<<CS11) | (0<<CS10);
-    TCNT1H=0x00;
-    TCNT1L=0x00;
-    ICR1H=0x00;
-    ICR1L=0x00;
-    OCR1AH=0x00;
-    OCR1AL=0x00;
-    OCR1BH=0x00;
-    OCR1BL=0x00;
-    // Timer/Counter 2 initialization
-    ASSR=(0<<EXCLK) | (0<<AS2);
-    TCCR2A=(0<<COM2A1) | (0<<COM2A0) | (0<<COM2B1) | (0<<COM2B0) | (0<<WGM21) | (0<<WGM20);
-    TCCR2B=(0<<WGM22) | (0<<CS22) | (0<<CS21) | (0<<CS20);
-    TCNT2=0x00;
-    OCR2A=0x00;
-    OCR2B=0x00;
-    // Timer/Counter 0 Interrupt(s) initialization
-    TIMSK0=(0<<OCIE0B) | (0<<OCIE0A) | (0<<TOIE0);
-    // Timer/Counter 1 Interrupt(s) initialization
-    TIMSK1=(0<<ICIE1) | (0<<OCIE1B) | (0<<OCIE1A) | (0<<TOIE1);
-    // Timer/Counter 2 Interrupt(s) initialization
-    TIMSK2=(0<<OCIE2B) | (0<<OCIE2A) | (0<<TOIE2);
+   // Configure Timer 0 for Fast PWM mode and PWM output on PB3 and on PB4 non inverting PWM signal
+	TCCR0A = (1<<WGM00) | (1<<WGM01) | (1<<COM0A1) | (0<<COM0A0) | (1<<COM0B1) | (0<<COM0B0);
+        // Set the prescaler value to 8 aprox 9.77 Khz frequency for the PWM output
+	TCCR0B = (1<<CS01);
+   TCNT0 = 0;
+
+   // Timer 2 initialization
+   TCNT2 = 0;  // Reset the timer counter
+    // Configure Timer 2 for Fast PWM mode 
+    TCCR2A = (1 << WGM21) | (1 << WGM20);
+    TCCR2B = (1 << CS21);
+    // Enable PWM non inverting  output on PD7
+    TCCR2A |= (1 << COM2A1) | (0 << COM2A0);
+   
+   
+   // Timer 1 initialization 
+    TCNT1L = 0x00; // set both halfs of the TCNT1 to 0 to reset the timer 1
+    TCNT1H = 0x00;
+    TCCR1A |= (1 << COM1B1) | (1 << WGM11); // select PWM output on OC1B
+    TCCR1B |= (1 << WGM13) | (1 << WGM12) | (0 << CS12) | (1 << CS10);  //prescaler set to 1 and Fast mode PWM non-inverting & TOP = ICR1
+   
+   
     // External Interrupt(s) initialization
     EICRA=(0<<ISC21) | (0<<ISC20) | (0<<ISC11) | (0<<ISC10) | (0<<ISC01) | (0<<ISC00);
     EIMSK=(0<<INT2) | (0<<INT1) | (0<<INT0);
