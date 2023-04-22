@@ -18,3 +18,6 @@
 
 # Ignore the CodeVision project settings file
 *.pjt
+
+CV_Program/Debug/*
+CV_Program/Release/*

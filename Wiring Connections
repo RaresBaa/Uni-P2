@@ -1,19 +1,13 @@
-arm:
-    pd7
-    pd6
-    pd5
-    pd4
-    pb7
-    pb6
 ps2:
-    pin1 data pc0
-    pin2 command pc1
+    pin1 data pc5
+    pin2 command pc4
     pin6 attention cs pc2
     pin7 clock pc3
 h bridge:
-    ena pb3
-    enb pb4
     in1 pb5
     in2 pb2
     in3 pb1
     in4 pb0
+i2c:
+    scl pc0
+    sda pc1
