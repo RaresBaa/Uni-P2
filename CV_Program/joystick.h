@@ -7,6 +7,9 @@
 #define _BV(bit) (1<<(bit))
 unsigned char chk_ana = 0;
 int data0=0,data1=0,data2=0,data3=0,data4=0,data5=0,temp=0;
+//variables that hold copies of the data from the joystick
+//to know if the data has changed between polls
+int dataNew0=0,dataNew1=0,dataNew2=0,dataNew3=0,dataNew4=0,dataNew5=0;
 
 int gameByte(int command)
 {
@@ -157,4 +160,27 @@ void joystick_poll()
         PORTC|=(1<<PScommand);                      // close communication with PSx controller
         delay_us(1);
         PORTC|=(1<<PSattention);                        // all done.
+}
+
+//Custom helper functions
+void updateJoystickData(void){
+        dataNew0 = data0;
+        dataNew1 = data1;
+        dataNew2 = data2;
+        dataNew3 = data3;
+        dataNew4 = data4;
+        dataNew5 = data5;
+}
+
+int checkJoystickUpdate(void){
+        if(dataNew0 != data0 || dataNew1 != data1 || dataNew2 != data2 || dataNew3 != data3 || dataNew4 != data4 || dataNew5 != data5){
+                return 1;
+        }
+        return 0;
+}
+
+//function to print to serial all the data from the joystick, used to determine what every data pin does
+void testJoystickData(void){
+    //print all data vars in binary
+    printf('%x %x %x %x %x %x\n',data0,data1,data2,data3,data4,data5);
 }
