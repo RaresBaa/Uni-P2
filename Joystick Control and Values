@@ -1,0 +1,34 @@
+ Values for data0 and data1 for each button pressed:
+ Button            Value    Variable
+Square             0x7f     data1
+Circle             0xdf     data1
+Triangle           0xef     data1
+Cross              0xbf     data1
+Dpad Up            0xef     data0
+Dpad Down          0xbf     data0
+Dpad Left          0x7f     data0
+Dpad Right         0xdf     data0
+Analog Stick L     0xfd     data0
+Analog Stick R     0xfb     data0
+L1                 0xfb     data1
+L2                 0xfe     data1
+R1                 0xf7     data1
+R2                 0xfd     data1
+Start              0xf7     data0
+Select             0xfe     data0
+
+For the analog sticks(values between 0 and 0xff):
+Left Stick: X axis - data4, Y axis - data5
+Right Stick: X axis - data2, Y axis - data3
+
+
+Control scheme for the arm servos:
+Servo 1: Dpad Left and Dpad Right
+Servo 2: Dpad Up and Dpad Down
+Servo 3: Cross and Triangle
+Servo 4: Square and Circle
+Servo 5: L2 and R2
+Servo 6: L1 and R1
+
+-First servo is at the base of the arm
+-Last servo opens and closes the claw

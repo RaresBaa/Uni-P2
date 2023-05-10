@@ -8,7 +8,7 @@ C=
 D=4/22/2023
 Files=1
 F1=main.c
-OpenedFiles=6
+OpenedFiles=7
 OF1=main.c
 Active1=1
 DebugOutputListFilesDirectory=Debug\List
@@ -28,7 +28,7 @@ Active0=0
 EditorPanel0=0
 PageIndex0=0
 EditorPanel1=0
-TimeStamp1=1452715555
+TimeStamp1=1453827269
 PageIndex1=1
 OF2=C:\cvavr\inc\twi.h
 Active2=0
@@ -53,8 +53,13 @@ PageIndex5=5
 OF6=joystick.h
 Active6=0
 EditorPanel6=0
-TimeStamp6=1452714874
+TimeStamp6=1453827264
 PageIndex6=6
+OF7=movement.h
+Active7=0
+EditorPanel7=0
+TimeStamp7=1453825028
+PageIndex7=7
 [CompilerDebug]
 Chip=ATmega164A
 CPUClock=20000000
@@ -153,8 +158,8 @@ WatchAVR8LAutoVariables=0
 UseEEPROMLocation0=1
 RebuildAll=0
 LinkageInformationPresent=1
-COFFileTimeStamp=1452715556
-Build=15
+COFFileTimeStamp=1453827271
+Build=28
 [DefinedSymbolsDebug]
 Count=0
 [Compiler]
@@ -256,7 +261,7 @@ UseEEPROMLocation0=1
 RebuildAll=1
 LinkageInformationPresent=0
 COFFileTimeStamp=-1
-Build=15
+Build=28
 [DefinedSymbols]
 Count=0
 [StartUp]
@@ -353,10 +358,10 @@ L13=Enhanced function parameters passing: Yes
 L14=Automatic register allocation: Yes
 L15=Smart register allocation: Yes
 L16=
-L17=Build: 14
-L18=14018 line(s) compiled
+L17=Build: 27
+L18=14081 line(s) compiled
 L19=No errors
-L20=3 warning(s)
+L20=13 warning(s)
 L21=
 L22=Bit variables area: 0x2 to 0x2
 L23=Bit variables size: 1 byte(s)
@@ -374,25 +379,25 @@ L34=
 L35=Heap size: 0 byte(s)
 L36=
 L37=EEPROM usage: 0 byte(s), 0.0% of EEPROM
-L38=Program size: 1832 words (3664 bytes), 22.4% of FLASH
-L39=125 words (250 bytes), 6.4% reduced by Code Compression
+L38=Program size: 1854 words (3708 bytes), 22.6% of FLASH
+L39=162 words (324 bytes), 8.0% reduced by Code Compression
 Lines=39
 [BuildInfoAssembler]
 L1=AVRASM: AVR macro assembler 2.1.30 (build 592 Nov  7 2008 12:38:17)
 L2=Copyright (C) 1995-2008 ATMEL Corporation
 L3=
-L4=C:\Users\rares\Desktop\CV_Program\Debug\List\CV.asm(3130): No EEPROM data, deleting C:\Users\rares\Desktop\CV_Program\Debug\Exe\CV.eep
+L4=C:\Users\rares\Desktop\CV_Program\Debug\List\CV.asm(3127): No EEPROM data, deleting C:\Users\rares\Desktop\CV_Program\Debug\Exe\CV.eep
 L5=
 L6=ATmega164A memory use summary [bytes]:
 L7=Segment   Begin    End      Code   Data   Used    Size   Use%
 L8=---------------------------------------------------------------
-L9=[.cseg] 0x000000 0x000e50   3618     46   3664   16384  22.4%
+L9=[.cseg] 0x000000 0x000e7c   3606    102   3708   16384  22.6%
 L10=[.dseg] 0x000100 0x00022c      0     44     44    1024   4.3%
 L11=[.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 L12=
 Lines=12
 [BookmarksFoldedCode]
-Files=7
+Files=8
 F1=pca9685.h
 F2=main.c
 F3=i2cSpiced.h
@@ -400,6 +405,7 @@ F4=inits.h
 F5=C:\cvavr\inc\twi.h
 F6=Debug\List\CV.asm
 F7=joystick.h
+F8=movement.h
 [Bookmarks1]
 TimeStamp=1452713848
 Row=34
@@ -421,13 +427,13 @@ Row=0
 Column=0
 ScrollPosX=0
 ScrollPosY=0
-TimeStamp=1452715893
+TimeStamp=1453827274
 [Bookmarks2]
-TimeStamp=1452715555
-Row=24
-Column=22
+TimeStamp=1453827269
+Row=19
+Column=8
 ScrollPosX=0
-ScrollPosY=15
+ScrollPosY=0
 BK0=-1
 BK1=-1
 BK2=-1
@@ -459,7 +465,7 @@ TimeStamp=1452713798
 Row=273
 Column=2
 ScrollPosX=0
-ScrollPosY=0
+ScrollPosY=238
 BK0=-1
 BK1=-1
 BK2=-1
@@ -504,11 +510,27 @@ BK8=-1
 BK9=-1
 [FoldedCode6]
 Blocks=0
+[Bookmarks7]
+TimeStamp=1453827264
+Row=159
+Column=1
+ScrollPosX=0
+ScrollPosY=151
+BK0=-1
+BK1=-1
+BK2=-1
+BK3=-1
+BK4=-1
+BK5=-1
+BK6=-1
+BK7=-1
+BK8=-1
+BK9=-1
 [HeadersList]
 Files=1
 F1=C:\Users\rares\Desktop\CV_Program\main.c
 [Header1]
-Files=13
+Files=14
 F1=inits.h
 F2=C:\cvavr\inc\mega164a.h
 F3=C:\cvavr\inc\mega324_bits.h
@@ -522,14 +544,15 @@ F10=C:\cvavr\inc\stdbool.h
 F11=pca9685.h
 F12=i2cSpiced.h
 F13=joystick.h
+F14=movement.h
 [FoldedCode2]
 Blocks=0
-[Bookmarks7]
-TimeStamp=1452714874
-Row=129
-Column=5
+[Bookmarks8]
+TimeStamp=1453825028
+Row=27
+Column=0
 ScrollPosX=0
-ScrollPosY=0
+ScrollPosY=39
 BK0=-1
 BK1=-1
 BK2=-1
@@ -540,6 +563,8 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
+[FoldedCode8]
+Blocks=0
 [FoldedCode7]
 Blocks=0
 [FoldedCode1]

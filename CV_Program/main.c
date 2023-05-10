@@ -3,6 +3,8 @@
 #include "joystick.h"
 #include "movement.h"
 
+bool ShouldMotorsMove = 0; //TODO
+
 void main(void){
     initUC();
     pca9685_init(0x00, 50);
@@ -17,11 +19,8 @@ void main(void){
     #asm("sei")
     while (1){
         joystick_poll();
-        if(checkJoystickUpdate()){
+        setMotorSpeed(data4, data5);
+        setServos();
         
-
-
-        updateJoystickData();
-        }
     }
 }
