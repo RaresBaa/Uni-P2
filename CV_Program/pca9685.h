@@ -6,7 +6,7 @@
 #define NEUTRAL_PULSE 1500
 #define MAX_PULSE 2100
 #define MIN_PULSE 900
-#define MAX_ANGLE 90
+#define MAX_ANGLE 180
 
 #include <io.h>
 #include <delay.h>
@@ -109,11 +109,13 @@ void pca9685_servo(uint8_t servoNum, float angle)
     uint8_t offHighCmnd;
     
     /* Set limits on angle (-90 to 90 degrees) */
+    /*
     if (angle > 90) {
         angle = 90;
     } else if (angle < -90) {
         angle = -90;
     } else {}
+    */
 
     /* Calculate the pulse duration in us (note: equation can be optimized) */
     pulse_us = NEUTRAL_PULSE + angle *((float)(MAX_PULSE - MIN_PULSE) / (2 * MAX_ANGLE));

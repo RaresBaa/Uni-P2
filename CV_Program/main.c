@@ -3,7 +3,6 @@
 #include "joystick.h"
 #include "movement.h"
 
-bool ShouldMotorsMove = 0; //TODO
 
 void main(void){
     initUC();
@@ -19,7 +18,7 @@ void main(void){
     #asm("sei")
     while (1){
         joystick_poll();
-        setMotorSpeed(data4, data5);
+        setMotorSpeed(data5, data3);
         setServos();
         
     }
